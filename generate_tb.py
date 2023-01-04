@@ -1,4 +1,4 @@
-from signal import *
+from define import *
 import argparse
 import os
 
