@@ -2,7 +2,7 @@
 //****************************** 
 
  
- module  test () ; 
+ module tb_test() ; 
 reg	[4:0] a	; 
 reg	[4:0] b	; 
 reg	[4:0] c	; 
@@ -45,13 +45,13 @@ initial
 
  
 //********* MONITOR	*************** 
-			$display("%t",$time);
-			display("%d",a); 
-			display("%d",b); 
-			display("%d",c); 
-			display("%d",d); 
-			display("%d",result1); 
-			display("%d",result2); 
+			$display("******* %t  ********",$time);
+			$display("%d",a); 
+			$display("%d",b); 
+			$display("%d",c); 
+			$display("%d",d); 
+			$display("%d",result1); 
+			$display("%d",result2); 
 
 		end
 	end
