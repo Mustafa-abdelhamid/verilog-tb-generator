@@ -1,8 +1,14 @@
 //*** test bench*** 
 //****************************** 
+
+ 
+ module  test () ; 
 reg	[4:0] a	; 
 reg	[4:0] b	; 
-wire	[5:0] result	; 
+reg	[4:0] c	; 
+reg	[4:0] d	; 
+wire	[5:0] result1	; 
+wire	[5:0] result2	; 
 
  
 //********* Module instantiation	*************** 
@@ -11,7 +17,10 @@ wire	[5:0] result	;
  test DUT ( 
 .a	(a)	,
 .b	(b)	,
-.result	(result)	
+.c	(c)	,
+.d	(d)	,
+.result1	(result1)	,
+.result2	(result2)	
  ) ;
 
  
@@ -19,4 +28,31 @@ wire	[5:0] result	;
 initial 
 	begin 
 
+	integer i;
+ 	for (i=0;i<20;i=i+1) 
+		begin
+
+ 
+//********* Random inputs generation	*************** 
+			a = $random();
+			#10;
+			b = $random();
+			#10;
+			c = $random();
+			#10;
+			d = $random();
+			#10;
+
+ 
+//********* MONITOR	*************** 
+			$display("%t",$time);
+			display("%d",a); 
+			display("%d",b); 
+			display("%d",c); 
+			display("%d",d); 
+			display("%d",result1); 
+			display("%d",result2); 
+
+		end
 	end
+endmodule

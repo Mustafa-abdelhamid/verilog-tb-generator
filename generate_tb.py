@@ -87,6 +87,7 @@ f = open(args.o, "a")
 f.write("//*** test bench*** \n")
 ## Declerang TB signals 
 f.write("//****************************** \n")
+f.write("\n \n module " +module_name +"() ; \n")
 for s in signals_list:	
 	if(s.get_signal_type()==signal_t.input_t):
 		if(s.get_signal_width()==1):
@@ -117,5 +118,20 @@ f.write("\n ) ;\n")
 
 f.write("\n \n//********* STIMULUS	*************** \n")
 f.write("initial \n	begin \n")
+CASES_NUM=input('Enter number of test stimulus:	')
+
+f.write("\n	integer i;")
+f.write("\n 	for (i=0;i<"+str(CASES_NUM)+";i=i+1) \n		begin\n")
+f.write("\n \n//********* Random inputs generation	*************** \n")
+for s in signals_list:	
+	if(s.get_signal_type()==signal_t.input_t):
+		f.write("			"+s.get_signal_name()+" = $random();\n			#10;\n")
+f.write("\n \n//********* MONITOR	*************** \n")
+f.write("			$display(\"%t\",$time);\n")
+
+for s in signals_list:	
+	f.write("			display(\"%d\","+s.get_signal_name()+"); \n")
+f.write("\n		end")
 f.write("\n	end")
+f.write("\nendmodule")
 f.close()
