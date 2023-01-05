@@ -63,14 +63,15 @@ class bcolor:
 	ENDC='\033[0m'
 	BOLD='\033[1m'
 	UNDERLINE='\033[4m'
+	
 def module_exist(x):
-	match=re.search(r'\smodule',x)
+	match=re.search(r' *module',x)
 	if (match==None):
 		print(bcolor.FAIL+bcolor.BOLD+bcolor.UNDERLINE+"ERROR:"+bcolor.ENDC+bcolor.FAIL+"NO MODULES FOUND"+bcolor.ENDC)
 		exit()		
 	return match.end()	
 def endmodule_exist(x):
-	match=re.search(r'\sendmodule',x)
+	match=re.search(r' *endmodule',x)
 	if (match==None):
 		print(bcolor.FAIL+bcolor.BOLD+bcolor.UNDERLINE+"ERROR:"+bcolor.ENDC+bcolor.FAIL+"MISSING MODULE END"+bcolor.ENDC)
 		

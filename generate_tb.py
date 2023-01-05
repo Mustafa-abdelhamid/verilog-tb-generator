@@ -125,7 +125,8 @@ f.write("\n 	for (i=0;i<"+str(CASES_NUM)+";i=i+1) \n		begin\n")
 f.write("\n \n//********* Random inputs generation	*************** \n")
 for s in signals_list:	
 	if(s.get_signal_type()==signal_t.input_t):
-		f.write("			"+s.get_signal_name()+" = $random();\n			#10;\n")
+		f.write("			"+s.get_signal_name()+" = $random();\n")
+f.write("\n			#10;")
 f.write("\n \n//********* MONITOR	*************** \n")
 f.write("			$display(\"******* %t  ********\",$time);\n")
 

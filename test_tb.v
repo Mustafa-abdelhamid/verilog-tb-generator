@@ -2,25 +2,27 @@
 //****************************** 
 
  
- module tb_test() ; 
-reg	[4:0] a	; 
-reg	[4:0] b	; 
-reg	[4:0] c	; 
-reg	[4:0] d	; 
-wire	[5:0] result1	; 
-wire	[5:0] result2	; 
+ module tb_mux() ; 
+reg	a	; 
+reg	b	; 
+reg	c	; 
+reg	d;	; 
+reg	s0	; 
+reg	s1;	; 
+wire	out	; 
 
  
 //********* Module instantiation	*************** 
 
  
- test DUT ( 
+ mux DUT ( 
 .a	(a)	,
 .b	(b)	,
 .c	(c)	,
-.d	(d)	,
-.result1	(result1)	,
-.result2	(result2)	
+.d;	(d;)	,
+.s0	(s0)	,
+.s1;	(s1;)	,
+.out	(out)	
  ) ;
 
  
@@ -40,7 +42,11 @@ initial
 			#10;
 			c = $random();
 			#10;
-			d = $random();
+			d; = $random();
+			#10;
+			s0 = $random();
+			#10;
+			s1; = $random();
 			#10;
 
  
@@ -49,9 +55,10 @@ initial
 			$display("%d",a); 
 			$display("%d",b); 
 			$display("%d",c); 
-			$display("%d",d); 
-			$display("%d",result1); 
-			$display("%d",result2); 
+			$display("%d",d;); 
+			$display("%d",s0); 
+			$display("%d",s1;); 
+			$display("%d",out); 
 
 		end
 	end
